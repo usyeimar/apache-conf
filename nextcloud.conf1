@@ -1,11 +1,13 @@
 <VirtualHost *:80>
-DocumentRoot "/var/www/html/nextcloud"
+DocumentRoot "/var/www/nextcloud"
 ServerName cloudhomedrive.club
 
 ErrorLog ${APACHE_LOG_DIR}/nextcloud.error
 CustomLog ${APACHE_LOG_DIR}/nextcloud.access combined
 
-<Directory /var/www/html/nextcloud/>
+Header always set Strict-Transport-Security "max-age=31536000"
+
+<Directory /var/www/nextcloud/>
 Require all granted
 Options FollowSymlinks MultiViews
 AllowOverride All
@@ -14,8 +16,8 @@ AllowOverride All
 Dav off
 </IfModule>
 
-SetEnv HOME /var/www/html/nextcloud
-SetEnv HTTP_HOME /var/www/html/nextcloud
+SetEnv HOME /var/www/nextcloud
+SetEnv HTTP_HOME /var/www/nextcloud
 Satisfy Any
 
 </Directory>
